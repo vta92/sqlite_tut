@@ -38,18 +38,26 @@ def delete(item):
     connection = sqlite3.connect("lib.db")
     curs = connection.cursor()
 
-    #curs.execute("INSERT INTO store VALUES(item, quality, price)")
-    #this line is sufficient but very bad online, as it's exposed to sql injection
     curs.execute("DELETE FROM store WHERE item = ?", (item,)) #the item, is important
 
     connection.commit()
     connection.close()
 
+def update(quantity, price, item):
+    connection = sqlite3.connect("lib.db")
+    curs = connection.cursor()
 
+    curs.execute("UPDATE store SET quantity=?, price=? WHERE item=?",\
+    (quantity,price,item))
+
+    connection.commit()
+    connection.close()
 
 create_table()
 insert("Water Glass", 10, 5)
 insert("Coffee Mug", 15, 10)
 print(get())
 delete("Water Glass")
+print(get())
+update(20, 7,"Coffee Mug")
 print(get())

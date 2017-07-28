@@ -8,3 +8,5 @@ Standard flow:
 execute twice = store duplicates
 placeholders with ? to avoid sql injection attacks
 refer to the sabastian raschka site for thorough info
+
+http://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html
